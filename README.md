@@ -1,3 +1,12 @@
+i370 port of lsh-0.61
+---------------------
+This is a port of the lsh-0.61, as it was in 1999, the the i370 Bigfoot
+linux kernel. This shell was chosen as a porting target mostly because
+it is small, simple, and should offer the minimum number of complications
+for porting. That is, it should work een with a minimalist C library.
+
+Original README
+---------------
 You are reading the documentation for a baby (but independent) shell 
 for Linux. The shell is copyrighted but you may use it in accordance
 with the conditions set out in the file COPYING. 
