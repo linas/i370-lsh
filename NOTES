@@ -1,0 +1,153 @@
+
+Welcome to MGW-LSH :
+
+Lsh is a shell partially inspired by some command interpreters for PC
+monitors (such as 4-DOS, DR-DOS, MS-DOS, N-DOS, PC-DOS, Q-DOS and
+others, which might be trademarks of their owners and which is hereby
+acknowledged).  However, most of the features of this shell are simply
+adapted from Unix (which also happens to be a trademark) shells.
+
+
+Conditions :
+
+You may only use, distribute and modify this package in accordance with 
+with the conditions of the GNU public license as set out in the file COPYING.
+
+
+Quickstart :
+
+If you want to try this shell without changing your login shell, try typing :
+
+lsh -k sample.etc.autoexec      OR      lsh -k /etc/autoexec          
+
+This will make that instance of lsh look like a login shell. Enjoy.
+
+
+Lsh Features :
+
+* Case insensitive builtins. "CD.." has the same effect as "cd .."
+  or "cD..". Environment references and file names are case sensitive though.
+
+* Drive mappings : It is possible to map drive letters onto any
+  Linux path, for example "map d:=/home" will create (and delete any
+  previous definition of) a drive called "d:" which will have as its root the
+  "/home" directory. If no explicit mappings have been defined, then only
+  one drive ("c:") is created which is mapped onto the root directory. To
+  remove a mapping use "zap d:". 
+
+* Automatic conversion of switches : "tar /xvf d:\file.tar" will execute
+  "tar -xvf /home/user/file.tar" if "d:" has been mapped onto
+  "/home/user" and the variable "NOROOT" has been set.
+
+* Aliases : For people who are too lazy to associate, say,
+  "/usr/bin/elm" with an interactive mail program, one can specify "alias
+  mail = "/usr/bin/elm"". To remove an alias, use the command "unalias".
+  Note that builtins like "dir" or arguments to builtins can not be aliased.
+
+* Several commands on one line : A sequence of commands can be separated
+  by a ";". So "cls;dir" will clear the screen and then list the directory.
+
+* Usable environment variables : "echo %HOSTNAME" will display the value
+  of the environment variable "HOSTNAME" if it is set.
+
+* Crufty shell expansion : "w*w" will match "World" but NOT "we.will".
+  Essentially matching is case insensitive, but "*" stops matching when
+  encountering a ".". This may be a bit troublesome since Linux does not
+  have a one "." limitation in filenames. Some filenames such as
+  "a.file.with.lost.of.dots" will not show up in a normal dir listing,
+  you would have to go "dir *.*.*.*.*.*" to find it.
+
+* No listing of special devices. Shell expansion will ignore any files
+  which are not directories or plain files. So a FIFO will not appear
+  anywhere. To observe this feature go "dir" in your "/dev" ("c:\dev")
+  directory.  Files to which the shell has no access rights will also not
+  be included in the shell expansion. This has been specially built in to 
+  protect novices from the shock of seeing new and strange files.
+
+* Separate configuration files : A shell which is started by the login
+  program or which has the environment variable "NOUNINIT" set, will
+  attempt to read commands from "/etc/autoexec" and then from a file by
+  the same name in the users home directory (referencing the "HOME"
+  environment variable).  At no stage is "/etc/profile" or ".profile"
+  read.
+
+* Fascist restrictions : by setting the environment variables "NOALIAS",
+  "NOMAP", "NOUNINIT", "NOCHANGE", "NOROOT" and "NOSET" (in that order),
+  the user will not be able to set up any new aliases, map any new
+  drives, run an uninitialized shell, use the builtins which modify
+  files, use any Linux paths in commands or arguments, and modify the
+  environment. If one has mapped only a drive onto the users home
+  directory and set up suitable aliases and set the "PATH" variable to
+  ".", it is possible to keep the user below his/her home directory and
+  deny any access to higher directories. At least that is the theory...
+
+  Please note that these restrictions were included to prevent novice
+  users accidentally compromising the system (since novice users, by
+  definition, are notorious for not logging out, choosing *really*
+  stupid passwords and the like, their accounts are liable to fall into
+  the wrong hands) and not to restrict experienced users... So it would
+  be nice for any sysadmin to change the shell of any user from this one
+  to a proper shell, if the user requests it.
+
+* Limited size of the command line : The longest command which is
+  accepted by the shell may not exceed 127 characters.
+
+* No real job control : It seems unfair to subject Unix haters to the
+  difficulties of managing tasks running in the background. A primitive
+  batch facility has been provided though : "sleep 20 !" will execute
+  "sleep 20" in the background and immune to hangups with output redirected
+  to "lsh.out".
+
+* No real flow control : No commands for controlling the flow of a program
+  ("IF", "DO", "WHILE", "FOR", "GOTO" are absent). It is cruel to
+  subject novices to programming. A minor concession has been 
+  made, though, "?dir" will list the directory, but only if the 
+  last external command was successful.
+
+
+Builtins :
+
+alias, break, bye, call, cd, chdir, cls, copy, ctty, date, del, dir,
+echo, erase, exit, logout, map, md, mkdir, path, pause, prompt, quit,
+rd, rem, ren, rename, rmdir, set, time, type, unalias, ver, vol, zap.
+
+Have a look at the manual page for a more complete description.
+
+
+Missing : As yet unimplemented
+
+* Too few checks for excess parameters for builtin commands.
+
+* No online help for builtins (dir /?).
+
+* Too few bounds checks ;-).
+
+
+A Couple of Warnings :
+
+* Many of the builtin commands do not behave exactly in the manner you
+  would expect them to... Bear that in mind at all times.
+
+* Reading the source might be hazardous to your health -- this little
+  program was written for relaxation during some serious exams. No 
+  provisions for readability, efficiency, maintainability or any other y 
+  were made.
+
+
+A Crufty Problem :
+
+* I did not feel like searching the command path manually, so if you
+  really need to run batch files do something like "call batchfile" or
+  "@batchfile" which also saves you spawning another shell, and retains
+  all current drive mappings (if you were to run a new instance of lsh,
+  you might have some different mappings, so some external commands
+  could be inaccessible). "call" is the only builtin which can take an
+  aliased argument, so you could go :
+
+  "alias batch="/usr/local/bin/batchfile""
+
+  to run file "/usr/local/bin/batchfile" containing lsh commands through 
+  the current lsh interpreter if you type "@batch". Of course you can
+  use the usual Unix script way if you do not mind having another new
+  shell around.
+

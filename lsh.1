@@ -1,0 +1,605 @@
+.rn '' }`
+''' $RCSfile$$Revision$$Date$
+''' 
+''' $Log$
+''' 
+.de Sh
+.br
+.if t .Sp
+.ne 5
+.PP
+\fB\\$1\fR
+.PP
+..
+.de Sp
+.if t .sp .5v
+.if n .sp
+..
+.de Ip
+.br
+.ie \\n(.$>=3 .ne \\$3
+.el .ne 3
+.IP "\\$1" \\$2
+..
+.de Vb
+.ft CW
+.nf
+.ne \\$1
+..
+.de Ve
+.ft R
+
+.fi
+..
+'''
+'''
+'''     Set up \*(-- to give an unbreakable dash;
+'''     string Tr holds user defined translation string.
+'''     Bell System Logo is used as a dummy character.
+'''
+.tr \(*W-|\(bv\*(Tr
+.ie n \{\
+.ds -- \(*W-
+.if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
+.if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\" diablo 12 pitch
+.ds L" ""
+.ds R" ""
+.ds L' '
+.ds R' '
+'br\}
+.el\{\
+.ds -- \(em\|
+.tr \*(Tr
+.ds L" ``
+.ds R" ''
+.ds L' `
+.ds R' '
+.if t .ds PI \(*p
+.if n .ds PI PI
+'br\}
+.TH LSH 1 "\*(RP"
+.UC
+.if n .hy 0 
+.if n .na
+.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
+.de CQ          \" put $1 in typewriter font
+.ft CW
+'if n "\c
+'if t \\&\\$1\c
+'if n \\&\\$1\c
+'if n \&"
+\\&\\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+'.ft R
+..
+.\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+.	\" AM - accent mark definitions
+.bd S B 3
+.	\" fudge factors for nroff and troff
+.if n \{\
+.	ds #H 0
+.	ds #V .8m
+.	ds #F .3m
+.	ds #[ \f1
+.	ds #] \fP
+.\}
+.if t \{\
+.	ds #H ((1u-(\\\\n(.fu%2u))*.13m)
+.	ds #V .6m
+.	ds #F 0
+.	ds #[ \&
+.	ds #] \&
+.\}
+.	\" simple accents for nroff and troff
+.if n \{\
+.	ds ' \&
+.	ds ` \&
+.	ds ^ \&
+.	ds , \&
+.	ds ~ ~
+.	ds ? ?
+.	ds ! !
+.	ds / 
+.	ds q 
+.\}
+.if t \{\
+.	ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
+.	ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
+.	ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
+.	ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
+.	ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
+.	ds ? \s-2c\h'-\w'c'u*7/10'\u\h'\*(#H'\zi\d\s+2\h'\w'c'u*8/10'
+.	ds ! \s-2\(or\s+2\h'-\w'\(or'u'\v'-.8m'.\v'.8m'
+.	ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
+.	ds q o\h'-\w'o'u*8/10'\s-4\v'.4m'\z\(*i\v'-.4m'\s+4\h'\w'o'u*8/10'
+.\}
+.	\" troff and (daisy-wheel) nroff accents
+.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
+.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
+.ds v \\k:\h'-(\\n(.wu*9/10-\*(#H)'\v'-\*(#V'\*(#[\s-4v\s0\v'\*(#V'\h'|\\n:u'\*(#]
+.ds _ \\k:\h'-(\\n(.wu*9/10-\*(#H+(\*(#F*2/3))'\v'-.4m'\z\(hy\v'.4m'\h'|\\n:u'
+.ds . \\k:\h'-(\\n(.wu*8/10)'\v'\*(#V*4/10'\z.\v'-\*(#V*4/10'\h'|\\n:u'
+.ds 3 \*(#[\v'.2m'\s-2\&3\s0\v'-.2m'\*(#]
+.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
+.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
+.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
+.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
+.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
+.ds ae a\h'-(\w'a'u*4/10)'e
+.ds Ae A\h'-(\w'A'u*4/10)'E
+.ds oe o\h'-(\w'o'u*4/10)'e
+.ds Oe O\h'-(\w'O'u*4/10)'E
+.	\" corrections for vroff
+.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
+.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
+.	\" for low resolution devices (crt and lpr)
+.if \n(.H>23 .if \n(.V>19 \
+\{\
+.	ds : e
+.	ds 8 ss
+.	ds v \h'-1'\o'\(aa\(ga'
+.	ds _ \h'-1'^
+.	ds . \h'-1'.
+.	ds 3 3
+.	ds o a
+.	ds d- d\h'-1'\(ga
+.	ds D- D\h'-1'\(hy
+.	ds th \o'bp'
+.	ds Th \o'LP'
+.	ds ae ae
+.	ds Ae AE
+.	ds oe oe
+.	ds Oe OE
+.\}
+.rm #[ #] #H #V #F C
+.SH "NAME"
+lsh : A Limited Shell (pronounced \*(L'losh')
+.SH "SYNOPSIS"
+\fBlsh\fR
+.PP
+\fBlsh\fR \fIfilename\fR
+.PP
+\fBlsh \-c\fR \fIcommands\fR
+.PP
+\fBlsh \-h\fR
+.PP
+\fBlsh \-k\fR \fIfilename\fR
+.PP
+\fBlsh \-r\fR \fIcommands\fR
+.SH "DESCRIPTION"
+Lsh is a shell which tries have a limited amount of features. It is
+intended for small Linux systems or users who are unable to learn any
+more advanced and/or powerful shells. This shell is suited to novice
+users and those who come from a \fBDOS\fR background.
+.Sh "Invocation"
+\fB\-c\fR Runs the arguments following the \fB\-c\fR through the shell and then exits.
+Example : <lsh \-c ver> will display the version number.
+.PP
+\fB\-h\fR Prints a terse help message.
+.PP
+\fB\-k\fR Runs the commands in the file following the \fB\-k\fR through the shell and
+then presents an interactive shell.
+.PP
+\fB\-r\fR Runs the commands following the \fB\-r\fR through the shell and then presents
+an interactive shell. This can be useful when starting \fBlsh\fR from, say, an
+\fBxterm(1)\fR. 
+.PP
+By default the shell will be interactive. However, if a filename is specified as
+the first argument, the shell will run the commands in that file through
+the command interpreter and then exit. This allows the system to execute
+a lsh script (first line \fB#!/bin/lsh\fR). Currently no arguments can be passed
+to lsh scripts. If you want to write proper scripts, may I suggest \fBash(1)\fR,
+\fBbash(1)\fR, \fBgawk(1)\fR, \fBm4(info)\fR, \fBperl(1)\fR, \fBsh(1)\fR or \fBzsh(1)\fR ?
+.Sh "Initialization"
+Once the shell is started it looks for a variable called \fB\s-1NOUNINIT\s0\fR in
+its environment. If that variable exists (it may be set to any value)
+then the shell tries to read commands from \fI/etc/autoexec\fR and
+\fB\s-1HOME\s0\fR/autoexec (the \fB\s-1HOME\s0\fR environment variable will usually be set up
+by the login facilities \- otherwise we assume that the current working
+directory is the home directory). The above files are also always read
+if the shell is a login shell (argv[0][0]==\*(R'\-') or if the shell is a 
+direct descendant of \fBinit(8)\fR.
+.PP
+The shell will always map drive C: to the systems root directory. If
+this is not desired, then the C: mapping has to be explicitly deleted
+or modified.
+.PP
+On starting, the shell tries to find an environment variable \fB\s-1PROMPT\s0\fR,
+the value of which it uses to print the prompt. If no such variable is
+defined, it looks for a variable \fB\s-1PS1\s0\fR, the value of which it adapts
+to print the prompt. If neither variables are defined it uses the string
+\f(CW$N\fR$G as its prompt.
+.PP
+If you have compiled in \fBtermcap(5)\fR support, \fBlsh\fR will also try 
+to establish your terminal type and set up the \fB\s-1LINES\s0\fR and \fB\s-1COLUMNS\s0\fR
+environment variables. The default value of the \fB\s-1TERM\s0\fR environment variable
+for a local tty is \fIlinux\fR, while a pseudo-terminal defaults to \fIdumb\fR. 
+.Sh "Builtin Commands "
+All builtin commands are case insensitive.
+.PP
+\s-1ALIAS\s0 : allows you to \*(L"abbreviate\*(R" an external command. Say you have a
+program /usr/bin/joe which you would like to have invoked if you type
+<\s-1EDIT\s0>. Then go <\s-1ALIAS\s0 \s-1EDIT\s0="/usr/bin/joe">. <\s-1ALIAS\s0> on its own will
+list the available aliases.  Alias definitions are stacked, if you
+define an alias twice, the second definition will be valid, but once you
+delete the alias the definition, the first definition becomes available
+again.
+.PP
+\s-1UNALIAS\s0 : Will remove the definition of an alias. <\s-1UNALIAS\s0 \s-1EDIT\s0> will
+remove the definition of \s-1EDIT\s0.
+.PP
+\s-1LOGOUT\s0 or \s-1EXIT\s0 or \s-1QUIT\s0 or \s-1BYE\s0 : Will check if mail has arrived \- if it
+has it, will tell you, otherwise it will exit. Typing the \s-1EOF\s0 character
+(usually ^D) will exit without checking for mail.
+.PP
+\s-1DIR\s0 : If run without arguments, it will list the contents of your
+current working directory. Otherwise it will list the first argument,
+or whatever that argument expanded to. See the \s-1DIRCMD\s0 environment 
+variable for the supported optional switches.
+.PP
+\s-1CD\s0 or \s-1CHDIR\s0 : If run without arguments, it will display your
+current working directory, otherwise it will change to the directory
+supplied as argument.
+.PP
+\s-1CLS\s0 : Will attempt to clear the screen. If it can, it will use the 
+\fBtermcap(5)\fR database.
+.PP
+\s-1TYPE\s0 : Will echo the filename given as first argument to the screen.
+.PP
+\s-1REM\s0 : If it occurs as the first characters, then all following
+characters will be ignored. Generally \*(L'#\*(R' is more useful.
+.PP
+\s-1PAUSE\s0 : Will wait for the user to press a key. If a quoted string is
+supplied as argument, it will be printed as message, for example <\s-1PAUSE\s0
+\*(L"Make my Day !"> will print <Make my Day !> and wait until the user
+strikes any key.
+.PP
+\s-1ECHO\s0 : Displays all its arguments (with variable substitution).
+.PP
+\s-1MAP\s0 : <\s-1MAP\s0 [\s-1DRIVE\s0=\s-1LINUXPATH\s0]> Will assign a drive to a Linux path. Without
+arguments, map will list all mapped drives. For example <\s-1MAP\s0 d:=/some/dir>
+will automagically substitute /some/dir for drive (volume) D:
+.PP
+\s-1ZAP\s0 : <\s-1ZAP\s0 \s-1DRIVE\s0> Will delete a drive. This may obviously not be your
+current drive.
+.PP
+\s-1CALL\s0 or @ : Will try to read commands from the file specified
+as argument. If that fails, they will try to execute the arguments.
+<?> works in a similar fashion, except that it will only run the 
+command if the previous external command returned true.
+.PP
+\s-1CTTY\s0 : Will try to open its argument for reading and appending. 
+If the argument is a terminal, a prompt will also be printed. 
+If its last argument is a <!> the \s-1SIG_HUP\s0 will be ignored and
+\s-1STDERR\s0 will be redirected to the filename. Reading of input 
+terminates one a \s-1EOF\s0 is encountered. This command has been only
+included for completeness.
+.PP
+\s-1RM\s0 or \s-1RMDIR\s0 : Will try to remove the directory given as argument.
+No shell expansion takes place, and only the first directory in the 
+argument list will be removed.
+.PP
+\s-1MD\s0 or \s-1MKDIR\s0 : Will try to create the directory given as argument.
+No shell expansion takes place, and only the first directory in the
+will argument list be created.
+.PP
+\s-1DATE\s0 : Displays the date.
+.PP
+\s-1TIME\s0 : Displays the time \- but only to the nearest second.
+.PP
+\s-1PATH\s0 : Will set the search path. <path \*(L"/usr/games"> will set the 
+path to games, <path c:\ebin> will set it to /bin if C: has been 
+mapped to /
+.PP
+\s-1DEL\s0 or \s-1ERASE\s0 : Will delete the first argument, or whatever that
+argument expanded to.
+.PP
+\s-1REN\s0 or \s-1RENAME\s0 : Will rename files. If rename is interactive (\s-1RENCMD\s0 has
+been set to /c), then <y> will rename a file, <a> will rename all files,
+<q> will stop the rename procedure entirely, <u> will rename all files
+which have a unique destination (ie those which will not overwrite an
+existing file). Please note that a non-interactive rename will issue
+\fBno\fR warning on overwriting an existing file. Wildcards can be used,
+but the results may be unpredictable.  Only the first two arguments will
+be considered, the rest will be silently ignored.
+.PP
+\s-1SET\s0 : <\s-1SET\s0 [\s-1VARIABLENAME\s0[=]\s-1VALUE\s0]> Will set \s-1VARIABLENAME\s0 to \s-1VALUE\s0.
+\s-1SET\s0 without arguments will display all environment variables.
+.PP
+\s-1PROMPT\s0 : <\s-1PROMPT\s0 [\s-1PROMPTSTRING\s0]> Will change the appearance of the prompt. 
+The default string is \f(CW$N\fR$G. The following escapes can be used. 
+.PP
+If no lowercase version present, then the escape is case insensitive. 
+.PP
+$A \- Bell
+.PP
+$B \- Pipe Character
+.PP
+$C \- Semicolon
+.PP
+$D \- Date
+.PP
+$E \- Escape Character (Useful for \s-1ANSI\s0 terminals)
+.PP
+$G \- Greater Than Character 
+.PP
+$H \- Backspace Character
+.PP
+$I \- Process Id of the Shell
+.PP
+$L \- Less Than Character
+.PP
+$M \- Mill : A little spinning Character (for fun)
+.PP
+$m \- Checks mail (in \f(CW%MAIL\fR).
+.PP
+$N \- Drive : As an \s-1UPPERCASE\s0 Character 
+.PP
+$n \- Drive : As a  lowercase Character
+.PP
+$O \- Exit Status of last External Command
+.PP
+$P \- Drive and Path
+.PP
+$Q \- Equal Character
+.PP
+$R \- Really Raw Linux Path
+.PP
+$r \- Raw Linux Path
+.PP
+$S \- End Standout Mode (if you have compiled with termcap)
+.PP
+$s \- Start Standout Mode (if you have compiled with termcap)
+.PP
+$T \- Time
+.PP
+$U \- User Name
+.PP
+$V \- Version
+.PP
+$W \- Who : Prints a star if someone has logged in or out.
+.PP
+$Z \- count of commands entered
+.PP
+$$ \- Dollar Character
+.PP
+$_ \- Newline Character
+.PP
+${\fBlsh command\fR} \- Will run any normal lsh command.  
+.PP
+$[\fBenvironment variable\fR] \- Will print the value of any normal lsh
+environment variable.
+.PP
+\s-1COPY\s0 : <\s-1COPY\s0 \s-1SOURCEFILE\s0 [+ \s-1SOURCEFILE\s0] [\s-1DESTINATIONFILE\s0]> Inefficiently
+copies a file or set of files to a new file or directory. source files
+separated by a + are concatenated. Wildcards can be used in source and
+destination files, but be careful.
+.PP
+\s-1BREAK\s0 : allows you to ignore some signals. To ignore a signal go <\s-1BREAK\s0
+\s-1OFF\s0 [\s-1SIGNALNUMBER\s0]> where \s-1SIGNALNUMBER\s0 will default to the value of
+\s-1SIGINT\s0 (usually 2). To restore a signal to its original action do <\s-1BREAK\s0
+[\s-1ON\s0] [\s-1SIGNALNUMBER\s0]>. Please note that all signals which you trap will
+also be ignored by the children of the shell, except \s-1SIGINT\s0, which will
+always be passed to the child. Obviously you can not trap \s-1SIGKILL\s0 or 
+\s-1SIGSTOP\s0. Unless you specify otherwise, the shell will take the default
+action on receiving a signal, execpt for login shells which will trap 
+\s-1SIGINT\s0.
+.PP
+\s-1VER\s0 : Displays the version of your shell. First public release was 0.44.
+.PP
+\s-1VOL\s0 : Will print some unimportant information about the drive you 
+assigned to a given Linux path.
+.Sh "Shell Expansion"
+Shell expansion is case insensitive. The wildcard \fB*\fR will match any
+character except for a \fB.\fR so to match filenames containing several
+dots, the shell requires an argument like *.*.*.*. Any normal character
+following a \fB*\fR and before a \fB.\fR will be \fIignored\fR during expansion.
+This means that normal characters are only useful before \fB*\fR or once
+\fB*\fR matching has been terminated by a \fB.\fR Only directories and regular
+files will be matched, thus no devices, symbolic links and the like will
+be matched. Only files to which the user has some kind of access will be
+matched.
+.Sh "Environment Variables"
+The following environment variables influence the behavior of the shell : 
+.PP
+\fB\s-1TRUE\s0\fR : The value of this variables is used in conditional statements.
+Its default value is 0 \- so if the last external command returned 0, 
+then any subsequent conditional will be evaluated, until a further
+external command does not return 0.
+.PP
+\fB\s-1DIRCMD\s0\fR : The options associated with the builtin command to list the
+directory. Supported options are \fI/a\fR, \fI/b\fR, \fI/c\fR, \fI/p\fR and \fI/w\fR. Note
+that, when using the \fI/c\fR switch, the difference between blocks
+allocated and bytes used is larger than the real value, since the space
+occupied by directories is not included in the number of bytes used.
+The paging \fI/p\fR can be interrupted by typing \fIq\fR.
+.PP
+\fB\s-1RENCMD\s0\fR : Option \fI/c\fR will make the \s-1RENAME\s0 command interactive. 
+.PP
+\fB\s-1DELCMD\s0\fR : Option \fI/c\fR will make the \s-1ERASE\s0 command interactive. 
+.PP
+\fB\s-1TMOUT\s0\fR : The value of this variable tells the shell the number of 
+seconds to wait for input before terminating itself (Useful if people
+tend to forget to log out).
+.PP
+\fB\s-1LINES\s0\fR and \fB\s-1COLUMNS\s0\fR : used by the /p and /w switch of \s-1DIRCMD\s0
+respectively to determine the layout of the directory listing.
+.PP
+\fB\s-1UMASK\s0\fR : The default protection assigned to files created by the shell
+or any of its children. Its value has to be a 3 digit octal number.
+.PP
+\fB\s-1PROMPT\s0\fR : Determines the appearance of the shell prompt. Note that the
+builtin command \fBprompt\fR does not modify this value, only the shells
+internal representation of it. To modify this variable use the \fBset\fR
+command instead.
+.PP
+\fB\s-1NICE\s0\fR : Processes run in the background have their priority decreased
+by this value. Its default value is 5.
+.PP
+\fB\s-1PATH\s0\fR : Determines the path which is searched for commands by the
+\fIexecvp()\fR function. If not set, this defaults to \fB/bin:/usr/bin:\fR or
+whatever your glibc uses as default. This should be set using Linux
+syntax, since only the builtin \fBpath\fR will try to convert drive
+mappings into Linux paths (which might be ambiguous anyway, so rather
+use set).
+.PP
+\fB\s-1MAIL\s0\fR : The file lsh will check for mail on starting and on exit (If
+new mail has arrived, then the shell will wait for a second exit or 
+logout request). This variable may currently only point to one file.
+.PP
+\fB\s-1HOME\s0\fR : The location of the users \fBautoexec\fR file which is run on login
+or if \fB\s-1NOUNINIT\s0\fR is set.
+.PP
+\fB\s-1FUNNY\s0\fR : If set, the shell will try to print funny error messages. 
+A value of 1 might be more funny than a larger value.
+.PP
+\fB\s-1TERM\s0\fR : Tells the shell what termcap entry to use.
+.PP
+\fB\s-1NOUNINIT\s0\fR : Forces every shell spawned to read the /etc/autoexec file
+and the autoexec file in the home directory of the user.
+.PP
+\fB\s-1NOMAP\s0\fR : Disallow new drive mappings.
+.PP
+\fB\s-1NOALIAS\s0\fR : Disallow definition of new aliases.
+.PP
+\fB\s-1NOSET\s0\fR : Disallow changing of the environment. Setting this variable
+is irreversible and hence also blocks the modification of any of the
+other variables.
+.PP
+\fB\s-1NOBATCH\s0\fR : Disallows running of non-interactive background processes.
+.PP
+\fB\s-1NOROOT\s0\fR : Disallows Linux paths or quoted strings in command line, any
+argument starting with a \*(L'/\*(R' will be converted into a \*(L'\-\*(R'. So \*(L'/xvf\*(R' 
+becomes \*(L'\-xvf\*(R'. 
+.PP
+\fB\s-1NOFREEDOM\s0\fR : Setting this variable is equivalent to setting all the 
+above variables starting with \s-1NO\s0.
+.PP
+\fB\s-1OUTPUT\s0\fR : Output of processes running in the background will be appended
+to the file which is defined in this variable. The default file is \fIlsh.out\fR.
+.PP
+\fB\s-1SHLVL\s0\fR : The value of this variable is incremented each time a new 
+instance of the shell is invoked.
+.Sh "Special Characters"
+Redirection reserves <>| Environment references reserve % Comments 
+reserve # Wildcards reserve ?* and to a lesser degree . Command
+separators reserve ; Drive and path specifications reserve :\e
+Switches reserve / Batch calls reserve @ Concatenation during copy
+reserves + Environment assignments reserves = Quoting reserves \*(L"
+Backgrounding reserves ! 
+.PP
+These characters should work normally : Alphanumerics,tab^space~[]_{}\-()
+.Sh "Command Evaluation"
+This section tries to describe how Lsh transforms the sequence of
+characters you just entered into the keyboard into a useful command to
+be executed.
+.PP
+1 \- The input is read. A \s-1EOF\s0 indicates that the shell should terminate
+immediately. A ^H or ^? is interpreted as a backspace character. Other
+control characters stop the scanning of further input.
+.PP
+2 \- The string is resolved into groups of characters (tokens to those in
+the know). At this stage environment references are also substituted (so
+if you have a \f(CW%VARIABLE\fR somewhere on that line of input, the shell will
+try to find that value, otherwise it just keeps the \f(CW%VARIABLE\fR).
+.PP
+3 \- Individual command sequences are identified. Sequences are separated
+by \*(L';\*(R'. There are some exceptions to this : When you set the path,
+using a command like <\s-1PATH\s0=c:\ebin;c:\eusr\ebin>, only the first command
+sequence will be executed \- otherwise the shell might try to run a
+command called <c:\eusr\ebin>.
+.PP
+4 \- Options for a command sequence are identified. This means that
+checks are made for input redirection, and for the mode in which the
+command sequence will be executed. The mode is indicated by the last
+character in the command sequence (The character just before a \*(L';\*(R' or a
+carriage return).
+.PP
+If that character happens to be a \*(L'!\*(R' then the command is run in the
+background (you will get the prompt back before the command completes,
+and the command will continue running even if you exit the shell. Please
+note that there is no way to get that command into the foreground \- so
+you will have to redirect any input to that command. Output will go to a
+file called lsh.out if you have not redirected the output).
+.PP
+If the last character is a \*(L'@\*(R' then that command will overlay your
+shell, meaning that your shell will itself become that command, and once
+the command terminates your shell will also have exited. This command is
+useful if run a command which will stay for a long time, and do not want
+to have the shell wasting space and time.
+.PP
+5 \- Pipes are sorted out. This shell keeps a \*(L"babysitter shell\*(R" for each
+command in a pipe, which tries to clean up after the command. Currently
+this is not quite working to plan \- sometimes strange things happen if
+the reading process quits before the writer has written everything.
+.PP
+6 \- Each command is checked to see if it is an external or internal
+command. For an external command, aliases and wildcards are expanded,
+and the command is executed. Internal commands are run by the shell
+itself.
+.PP
+Each command may be conditionally executed : If the first character is a
+\*(L'?\*(R' then the command will only be executed if the last external command
+returned true (the definition of true can be changed by setting the
+variable \s-1TRUE\s0).
+.Sh "Example Commands"
+Some commands to ponder and to experiment with. 
+.PP
+prompt \*(L"${echo hi | bban \-}\*(R"
+.PP
+alias vv="/usr/bin/ls \-lF\*(R"
+.PP
+map z:=/usr/bin
+.PP
+break off 2 3
+.PP
+pause \*(L"Hasta La Vista, Baby !\*(R"
+.PP
+dir | ?uuencode test | more 
+.PP
+who > testfile
+.PP
+set \s-1UMASK\s0=077
+.PP
+echo \f(CW%HOME\fR is where I belong
+.PP
+mc @
+.PP
+ls \-F # \-l 
+.PP
+ls \-l ; whoami
+.PP
+zap z:
+.PP
+dir c:\ebin 
+.PP
+xterm ; ?exit
+.Sh "Limitations "
+A small selection of limitations :
+.PP
+No proper job control, no proper flow control, no command output
+substitution, no tilde expansion, few switches for builtin commands, poor
+error messages, no command completion, no real command history, no builtin
+help, command line limited to 127 characters.
+.SH "FILES"
+/etc/autoexec \- global startup file
+.PP
+%HOME/autoexec \- per user startup file
+.PP
+%HOME/.autoexec \- alternate per user startup file
+.SH "SEE ALSO"
+\fIshells\fR\|(5), \fIchsh\fR\|(1), \fIftpd\fR\|(8) for information about having this shell
+as a login shell. \fItermcap\fR\|(5) for setting up a terminal description.
+.SH "DISTRIBUTION"
+Duplication and use of this program is subject to the terms set out
+in the file COPYING which you should have received with this package.
+.SH "FEEDBACK"
+Please mail comments to \fIlsh@mbs.bch.uct.ac.za\fR.
+.SH "BUGS"
+Oh, lots and lots. Statements after a call statement are ignored (or
+worse \- so avoid having a ; after @, ?, call or ctty), no parameters can
+be passed to a batch file, little checking for excess parameter passed to
+builtins, shell expansion is crufty \fIand buggy\fR. However, some bugs
+have seniority (they have been propagated from the originals) and hence
+are features. Be warned.
+
+.rn }` ''

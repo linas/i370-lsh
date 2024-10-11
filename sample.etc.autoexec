@@ -1,0 +1,64 @@
+REM  A sample /etc/autoexec file for the limited shell (/bin/lsh).
+REM  You can also use any of the commands in this file in a per user 
+REM  startup file (%HOME/.autoexec) or from the command line.
+REM  REM works only as first word, # can be used anywhere as comment.
+###############################################################################
+#  This is *really* important. Pick your favourite prompt.
+# prompt "${bban HeLLo}$_$g"         # For extroverts.
+# prompt "$w$e[01;33m$p$g$e[00m"     # For colourful characters (ANSI).
+# prompt $s$p$g$S                    # Standout - let termcap do the work.
+# prompt "$e]2;$p $w$g"            # Have path in xterm title bar
+# set PROMPT=$m[$Z]:$i:$r$$          # For someone who prefers a real shell ;-) 
+# prompt "$p$e[01;33m$m$e[01;31m$w$e[00m$g" # Expensive mailcheck and logon/off
+prompt $p$g                          # For sentimental people. 
+###############################################################################
+#  Make sure that all lsh users will have subshells initialized.
+set NOUNINIT=true    
+###############################################################################
+#  A responsible login program will always set up the HOME variable :*)
+map f:=%HOME
+#  Some other mappings - to be safe
+map g:=/home                         # You could make it look like a LAN if
+map h:=/usr                          # you map x: and y: onto /bin and /usr/bin 
+###############################################################################
+#  Alias some programs - the aliases may not work if you do not have the progs.
+alias help="/usr/bin/man lsh"        # Be nice to newcomers.
+alias nc=/usr/bin/mc                 # The illusion is complete...
+alias mem="/bin/free -bt"            # Not that you should worry about this.
+alias edit=/usr/bin/joe              # Any easy editor ;-).
+###############################################################################
+#  We can not delete a current drive.
+# g: ; f: ; zap c:                     
+###############################################################################
+#  Check if we are a subshell.
+test %SHLVL = 1 
+###############################################################################
+#  Chat up the user - but only if SHLVL is 1
+?echo " "
+?echo Hello %LOGNAME
+?ver
+?echo Available Drive Mappings:
+?map
+?echo " "
+?echo Available Aliases:
+?alias
+?echo " "
+###############################################################################
+#  The options below would restrict the user to his/her home directory  
+#  IF you delete the above c: h: and g: mappings and do not alias anything
+#  which allows escapes to other shells. Please do not be too nasty.
+# set PATH=.                         # No path search.
+# set NOMAP=true                     # Disallow new mappings.
+# set NOALIAS=true                   # Disallow new aliases.
+# set NOROOT=true                    # No absolute linux paths in command.
+# set NOSET=true                     # Disallow environment changes.
+###############################################################################
+#  Some other options and switches :
+# set LINES=24                       # Override your termcap. 
+# set DIRCMD=/pc                     # Have a complete paged listing. 
+# set RENCMD=/c                      # Makes rename interactive.
+# set DELCMD=/c                      # Makes erase interactive.
+# set TMOUT=1800                     # Timeout after 1/2 hour.
+# set UMASK=077                      # No snooping. 
+# set FUNNY=2                        # Maybe. 
+# set OUTPUT="nohup.out"             # Output of batched processes
