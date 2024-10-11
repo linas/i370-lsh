@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <utmp.h>
+#include <asm/stat.h> // XXX FIXME hack alert probably wrong
 #include <sys/stat.h>
 #include "defs.h"
 

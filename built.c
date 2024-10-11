@@ -11,6 +11,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <asm/stat.h> // temp hack, probably wrong
 #include <sys/vfs.h>
 #include "defs.h"
 

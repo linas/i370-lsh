@@ -3,10 +3,9 @@
 # If you do not want to use the termcap library, 
 # just delete the -DUSE_TERMCAP (and -ltermcap) and do a 
 # make clean ; make
-CC     = /home/linas/src/i370/usr/bin/i370-ibm-linux-gcc
-INCLUDES= -I/home/linas/src/i370/root/usr/include
-# CFLAGS = -Wall -O2 -fomit-frame-pointer -DUSE_TERMCAP 
-CFLAGS = -Wall -O2 -fomit-frame-pointer $(INCLUDES)
+CC     = i370-ibm-linux-gcc
+INCLUDES= -I../pdos-gitcode/pdpclib
+CFLAGS = -Wall -O2 $(INCLUDES) -L ../pdos-gitcode/pdpclib
 # LIBS   = -ltermcap
 LIBS=
 

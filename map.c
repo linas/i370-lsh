@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
+#include <asm/stat.h> // hack alert XXX probably wrng FIXME
 #include <sys/stat.h>
 #include <sys/types.h>
 #include "defs.h"

@@ -9,6 +9,7 @@
 #include <time.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <asm/stat.h> // hack alert XXX FIXME probably wrong
 #include <sys/stat.h>
 #include <sys/vfs.h>
 
