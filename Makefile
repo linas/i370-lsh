@@ -4,9 +4,12 @@
 # just delete the -DUSE_TERMCAP (and -ltermcap) and do a 
 # make clean ; make
 CC     = i370-ibm-linux-gcc
+
 # INCLUDES= -I../pdos-gitcode/pdpclib
 # CFLAGS = -Wall -O2 $(INCLUDES) -L ../pdos-gitcode/pdpclib
-CFLAGS = -Wall -O2 $(INCLUDES)
+
+INCLUDES= -I /usr/local/i370-linux-uclibc/usr/include
+CFLAGS = -Wall -O2 $(INCLUDES) -L /usr/local/i370-linux-uclibc/usr/lib
 # LIBS   = -ltermcap
 LIBS=
 
