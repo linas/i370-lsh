@@ -10,10 +10,11 @@
 #include <time.h>
 #include <unistd.h>
 #include <ctype.h>
-#include <utmp.h>
-#include <asm/stat.h> // XXX FIXME hack alert probably wrong
+// #include <utmp.h> Not these days.
 #include <sys/stat.h>
 #include "defs.h"
+
+#define UTMP_FILE "/var/run/utmp"
 
 /* print the prompt */
 

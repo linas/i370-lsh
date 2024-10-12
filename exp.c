@@ -9,7 +9,6 @@
 #include <ctype.h>
 #include <string.h>
 #include <sys/types.h>
-#include <asm/stat.h> // XXX hack alert FIXME probably wrong
 #include <sys/stat.h>
 #include "defs.h"
 
