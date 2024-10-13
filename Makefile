@@ -9,7 +9,7 @@ CC     = i370-ibm-linux-gcc
 # CFLAGS = -Wall -O2 $(INCLUDES) -L ../pdos-gitcode/pdpclib
 
 INCLUDES= -I /usr/local/i370-linux-uclibc/usr/include \
-          -I /home/bigfoot/i370-linux-2.2.1/include
+          -I /usr/local/i370-linux/include
 CFLAGS = -Wall -O2 $(INCLUDES) -L /usr/local/i370-linux-uclibc/usr/lib
 # LIBS   = -ltermcap
 LIBS=
