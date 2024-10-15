@@ -10,7 +10,8 @@ CC     = i370-ibm-linux-gcc
 
 INCLUDES= -I /usr/local/i370-linux-uclibc/usr/include \
           -I /usr/local/i370-linux/include
-CFLAGS = -Wall -O2 $(INCLUDES) -L /usr/local/i370-linux-uclibc/usr/lib
+CFLAGS = -Wall -O2 $(INCLUDES) -L /usr/local/i370-linux-uclibc/usr/lib \
+         -B /usr/local/i370-linux-uclibc/usr/lib
 # LIBS   = -ltermcap
 LIBS=
 
